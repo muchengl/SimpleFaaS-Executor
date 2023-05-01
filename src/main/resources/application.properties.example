@@ -1,0 +1,32 @@
+server.port=8080
+
+spring.datasource.username=
+spring.datasource.password=
+
+# jdbc:mysql://{IP}:3306/faas?useSSL=false&useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC&allowPublicKeyRetrieval=true
+spring.datasource.url=
+
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+
+mybatis.type-aliases-package=com.simplefass.pojo
+mybatis.mapper-locations=classpath:mybatis/mapper/*.xml
+
+spring.servlet.multipart.max-file-size=5MB
+spring.servlet.multipart.max-request-size=100MB
+
+
+
+
+# User Config
+value.OSSAccessKey=
+value.OSSAccessKeySecret=
+value.OSSArn=
+value.OSSRegion=cn-beijing
+
+
+# /xxxx/xxxx/WasmEdge/build/tools/wasmedge/wasmedge
+value.RuntimePath=
+
+
+# ~/
+value.ImageStorgePath=
