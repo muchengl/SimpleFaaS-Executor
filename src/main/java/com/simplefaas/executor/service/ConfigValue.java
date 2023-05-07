@@ -33,6 +33,9 @@ public class ConfigValue {
     @Value("${value.registryHost}")
     public String registryHost;
 
+    @Value("${value.aliveTime}")
+    public int aliveTime;
+
 
 
 

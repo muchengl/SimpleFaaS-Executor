@@ -1,9 +1,15 @@
 package com.simplefaas.executor.ImageManager;
 
-import java.io.File;
-import java.util.HashMap;
-import java.util.Map;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import java.io.File;
+import java.util.*;
+
+
+@Data
+@AllArgsConstructor
 public class ImageLruCache {
 
 
@@ -60,6 +66,20 @@ public class ImageLruCache {
             return node.funcPath;
         }
         return "";
+    }
+
+
+    public List<String> getNodeList(){
+        Set<String> set=map.keySet();
+
+        List<String> list=new ArrayList<>();
+
+        for (String key : set) {
+            Node node=map.get(key);
+            list.add(node.funcName);
+        }
+
+        return list;
     }
 
     public void put(String funcName, String funcPath) {

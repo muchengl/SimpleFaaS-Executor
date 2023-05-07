@@ -1,5 +1,6 @@
 package com.simplefaas.executor.ImageManager;
 
+import com.alibaba.fastjson.JSON;
 import com.simplefaas.executor.service.ConfigValue;
 import com.simplefaas.executor.utils.OSSUtil;
 
@@ -8,6 +9,13 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class ImageManager {
+
+
+    public static String getImageList(){
+        ImageLruCache imageCache=ImageLruCache.getInstance();
+
+        return JSON.toJSONString(imageCache.getNodeList());
+    }
 
     public static String getWasmImagePath(String funcName, ConfigValue config) throws IOException {
 
