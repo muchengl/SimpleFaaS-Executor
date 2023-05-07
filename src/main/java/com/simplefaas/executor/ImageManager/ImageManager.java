@@ -7,14 +7,20 @@ import com.simplefaas.executor.utils.OSSUtil;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.List;
 
 public class ImageManager {
 
 
     public static String getImageList(){
         ImageLruCache imageCache=ImageLruCache.getInstance();
-
-        return JSON.toJSONString(imageCache.getNodeList());
+        List<String> list=imageCache.getNodeList();
+        String imagelist="";
+        for (String s : list) {
+            imagelist+=" ";
+            imagelist+=s;
+        }
+        return imagelist;
     }
 
     public static String getWasmImagePath(String funcName, ConfigValue config) throws IOException {

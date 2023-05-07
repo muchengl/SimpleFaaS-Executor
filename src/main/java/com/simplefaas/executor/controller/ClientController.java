@@ -19,6 +19,8 @@ public class ClientController {
     @RequestMapping("/run")
     public String run(String funcname,String data) {
 
+        System.out.println("Task: "+funcname+" "+data);
+
         taskNum.getAndIncrement();
 
         String res=runner.runFunc(funcname,data);
