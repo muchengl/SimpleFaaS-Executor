@@ -1,6 +1,7 @@
 package com.simplefaas.executor.service;
 
 import com.simplefaas.executor.ImageManager.ImageManager;
+import com.simplefaas.executor.utils.ShellUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,7 +30,6 @@ public class RunFuncService implements RunFuncServiceInterface{
 
         // 拼接运行指令
         String parameterArr[]=data.split(" ");
-
         String cli[] = new String[parameterArr.length+4];
 
         cli[0]=config.RuntimePath;
@@ -42,22 +42,7 @@ public class RunFuncService implements RunFuncServiceInterface{
         }
 
 
-        // 运行WASM runtime
-        Process process = null;
-        try {
-            process = Runtime.getRuntime().exec(cli);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        InputStream output=process.getInputStream();
-
-        // 读取返回值
-        String Final_String = null;
-        try {
-            Final_String = new String(output.readAllBytes());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        String Final_String= ShellUtil.runSh(cli);
 
         System.out.println("Output Value:\n"+Final_String+"\n==================================================================\n");
 

@@ -30,6 +30,10 @@ public class ConfigValue {
     public String ImageStorgePath;
 
 
+    @Value("${value.registryHost}")
+    public String registryHost;
+
+
 
 
 
